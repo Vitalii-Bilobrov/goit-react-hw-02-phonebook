@@ -1,12 +1,18 @@
-import React from 'react';
-import { PropTypes } from 'prop-types';
-import { nanoid } from 'nanoid';
+import React, { Component } from 'react';
 
-export const Contacts = () => (
-  <>
-    <h1>Contacts</h1>
-    <ul>
-      <li></li>
-    </ul>
-  </>
-);
+export const Contacts = ({ contactItem, onDeleteContact }) => {
+  return (
+    <li id={contactItem.id}>
+      <span>{contactItem.name}</span>
+      <span>{contactItem.number}</span>
+      <button
+        type="button"
+        onClick={() => {
+          onDeleteContact(contactItem.id);
+        }}
+      >
+        Delete
+      </button>
+    </li>
+  );
+};
