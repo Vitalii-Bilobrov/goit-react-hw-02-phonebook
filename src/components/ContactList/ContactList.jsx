@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { Contacts } from 'components/Contacts/Contacts';
 
 export const ContactList = ({ contacts, filteredlist, onDeleteContact }) => {

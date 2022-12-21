@@ -1,5 +1,3 @@
-import React, { Component } from 'react';
-
 export const Contacts = ({ contactItem, onDeleteContact }) => {
   return (
     <li id={contactItem.id}>
