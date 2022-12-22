@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { Form } from './Form/Form';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
-
+import { Notification } from './Notification/Notification';
 import { nanoid } from 'nanoid';
 
 export class App extends Component {
@@ -17,7 +17,6 @@ export class App extends Component {
   };
 
   formSubmitHandler = data => {
-    console.log(data);
     const isInContacts = this.state.contacts.some(
       contact => contact.name.toLowerCase() === data.name.toLowerCase()
     );
@@ -59,14 +58,23 @@ export class App extends Component {
         <div>
           <h1>Phonebook</h1>
           <Form onSubmit={this.formSubmitHandler} />
-
-          <h2>Contacts</h2>
-          <Filter filter={this.onFilterContacts} value={this.state.filter} />
-          <ContactList
-            contacts={this.state.contacts}
-            filteredlist={filterContacts}
-            onDeleteContact={this.onDeleteContact}
-          />
+        </div>
+        <div>
+          {filterContacts.length > 0 ? (
+            <>
+              <h2>Contacts</h2>
+              <Filter
+                filter={this.onFilterContacts}
+                value={this.state.filter}
+              />
+              <ContactList
+                filteredlist={filterContacts}
+                onDeleteContact={this.onDeleteContact}
+              />
+            </>
+          ) : (
+            <Notification message="There is no any contacts - create the first one!" />
+          )}
         </div>
       </>
     );

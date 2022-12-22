@@ -1,6 +1,6 @@
 import { Contacts } from 'components/Contacts/Contacts';
 
-export const ContactList = ({ contacts, filteredlist, onDeleteContact }) => {
+export const ContactList = ({ filteredlist, onDeleteContact }) => {
   return (
     <>
       <ul>
